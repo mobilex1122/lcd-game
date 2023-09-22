@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + TS</title>
+    <script type="module" crossorigin src="/assets/index-1a934ba3.js"></script>
+    <link rel="stylesheet" href="/assets/index-dc354cb7.css">
+  </head>
+  <body>
+    <div class="center">
+      <div class="player">
+        <div class="around">
+           
+        </div>
+        <div id="game"><div class="bg-light"></div><div class="bg-dark"></div></div>
+        <div id="darkmode"><div class="switch"></div><div class="led"></div><span>Dark mode</span></div>
+      </div>
+    </div>
+    
+    
+    
+    <script>
+      
+      const changeMode = () => {
+        const root = document.body
+        root.classList.toggle("dark")
+      }
+      document.getElementById('darkmode').addEventListener('click', () => {
+        const root = document.body
+        root.classList.toggle("dark")
+      })
+    </script>
+  </body>
+</html>

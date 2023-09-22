@@ -1,6 +1,6 @@
 export class Game {
   public svg!: SVGSVGElement;
-  private lastFrameTime!: number;
+  // private lastFrameTime!: number;
   private keys: { [key: string]: boolean } = {};
 
   private toggleElement = (element: string, state: boolean) => {
@@ -25,7 +25,7 @@ export class Game {
 
   update(): void {
     // Update game state based on elapsed time
-    const currentTime = Date.now();
+    // const currentTime = Date.now();
     // const deltaTime = (currentTime - this.lastFrameTime) / 1000; // Convert to seconds
 
     // Modify SVG elements based on game state or other logic
@@ -33,7 +33,7 @@ export class Game {
       this.toggleElement("#circle1", this.keys["Space"]);
     }
 
-    this.lastFrameTime = currentTime;
+    // this.lastFrameTime = currentTime;
   }
 
   input(): void {
@@ -50,7 +50,7 @@ export class Game {
 
   start(): void {
     this.init();
-    this.lastFrameTime = Date.now();
+    // this.lastFrameTime = Date.now();
     this.gameLoop();
   }
 }

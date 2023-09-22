@@ -1,13 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
-
-
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
 
 * {
-  transition: opacity 400ms, background-color 400ms, filter 400ms;
-  font-family: 'Roboto', sans-serif;
+  transition:
+    opacity 400ms,
+    background-color 400ms,
+    filter 400ms;
+  font-family: "Roboto", sans-serif;
   user-select: none;
 }
-
 
 body {
   margin: 0;
@@ -23,21 +23,21 @@ body {
   position: absolute;
   background-color: #1e3a51;
   border-radius: 0.2rem;
-  
+
   left: 50%;
   top: 45%;
   transform: translate(-50%, -50%);
   height: 120%;
   width: 150%;
   box-sizing: border-box;
-  border-top:#254966 outset  4px ;
+  border-top: #254966 outset 4px;
 }
 .around::before {
   position: absolute;
   content: "";
-  background-color:  #ab8a5e;
+  background-color: #ab8a5e;
   border-radius: 0.2rem;
-  
+
   left: 0%;
   top: 0.4rem;
 
@@ -48,7 +48,6 @@ body {
   border: #c29e6f outset 4px;
 }
 
-
 .center {
   display: flex;
   justify-content: center;
@@ -58,7 +57,7 @@ body {
   height: 100vh;
   transition: 0;
   animation: show 1s 0.5s forwards;
-  animation-timing-function: cubic-bezier(.18,.89,.32,1.28);
+  animation-timing-function: cubic-bezier(0.18, 0.89, 0.32, 1.28);
 }
 
 @keyframes show {
@@ -89,7 +88,7 @@ body {
 }
 
 .bg-light {
-  background-image:  url('lcd-bg.png');
+  background-image: url("lcd-bg.png");
   background-size: cover;
   position: absolute;
   inset: 0;
@@ -101,7 +100,7 @@ body {
 
 .bg-dark {
   opacity: 0;
-  background-image:  url('lcd-bg-dark.png');
+  background-image: url("lcd-bg-dark.png");
   background-size: cover;
   position: absolute;
   background-position: center;
@@ -109,7 +108,6 @@ body {
   width: 100%;
   height: 100%;
   z-index: -1;
-  
 }
 
 svg {
@@ -122,7 +120,7 @@ svg *:not(g, #bg *) {
   transition: 200ms;
 }
 svg *:not(g, #bg *).show {
-  fill: rgba(0, 0, 0, 0.842) !important;
+  fill: rgb(0, 0, 0) !important;
 }
 
 #darkmode {
@@ -134,7 +132,6 @@ svg *:not(g, #bg *).show {
   align-items: center;
   gap: 0.2rem;
 }
-
 
 #darkmode span {
   filter: blur(0.3px);
@@ -166,14 +163,19 @@ svg *:not(g, #bg *).show {
   border-radius: 1000rem;
   filter: blur(2px) brightness(2);
   position: absolute;
-  content: '';
+  content: "";
   opacity: 0;
 }
 
 #darkmode .switch::after {
   transition: 400ms;
   content: "";
-  background: linear-gradient(90deg, rgb(61, 61, 61) 20%,rgb(29, 29, 29),rgb(61, 61, 61) 80%);
+  background: linear-gradient(
+    90deg,
+    rgb(61, 61, 61) 20%,
+    rgb(29, 29, 29),
+    rgb(61, 61, 61) 80%
+  );
   box-shadow: inset rgb(17, 17, 17) 0 0 1px;
   position: absolute;
   display: inline-block;
@@ -183,36 +185,26 @@ svg *:not(g, #bg *).show {
   height: 0.5rem;
 }
 
-
 .dark {
   background-color: rgb(0, 0, 0);
-  
+
   .bg-light {
     opacity: 0;
   }
-  
+
   .bg-dark {
     opacity: 1;
   }
-  
+
   svg {
     filter: drop-shadow(rgba(0, 0, 0, 0) 3px 3px 0px);
-  }
-
-  svg *:not(g, #bg *) {
-    /* enforces specific color to svg's so it looks like real lcd */
-    fill: rgba(0, 0, 0, 0.075) !important;
-    transition: 200ms;
-  }
-  svg *:not(g, #bg *).show {
-    fill: rgba(0, 0, 0, 0.527) !important;
   }
 
   #game {
     border: #443726 inset 5px;
   }
 
-  #darkmode .switch::after  {
+  #darkmode .switch::after {
     left: 0.6rem;
     filter: brightness(1);
   }
@@ -233,4 +225,3 @@ svg *:not(g, #bg *).show {
     opacity: 0.5;
   }
 }
-

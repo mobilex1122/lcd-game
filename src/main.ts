@@ -12,6 +12,8 @@ fetch("./lcd.svg")
 
     const game = new Game();
     game.svg = svgElement;
-    game.start();
+    setTimeout(() => {
+      game.start();
+    }, 2000);
   })
   .catch((error) => console.error("Error loading SVG:", error));

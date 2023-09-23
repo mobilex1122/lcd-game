@@ -1,4 +1,4 @@
-import "./style.css";
+import "./style.scss";
 // import lcdImg from './lcd1.svg'
 import { Game } from "./game/game";
 

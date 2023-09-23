@@ -9,26 +9,29 @@
   <body>
     <div class="center">
       <div class="player">
-        <div class="around">
-           
+        <div class="around"></div>
+        <div id="game">
+          <div class="bg-light"></div>
+          <div class="bg-dark"></div>
         </div>
-        <div id="game"><div class="bg-light"></div><div class="bg-dark"></div></div>
-        <div id="darkmode"><div class="switch"></div><div class="led"></div><span>Dark mode</span></div>
+        <div id="darkmode">
+          <div class="switch"></div>
+          <div class="led"></div>
+          <span>Dark mode</span>
+        </div>
       </div>
     </div>
-    
-    
+
     <script type="module" src="/src/main.ts"></script>
     <script>
-      
       const changeMode = () => {
-        const root = document.body
-        root.classList.toggle("dark")
-      }
-      document.getElementById('darkmode').addEventListener('click', () => {
-        const root = document.body
-        root.classList.toggle("dark")
-      })
+        const root = document.body;
+        root.classList.toggle("dark");
+      };
+      document.getElementById("darkmode").addEventListener("click", () => {
+        const root = document.body;
+        root.classList.toggle("dark");
+      });
     </script>
   </body>
 </html>

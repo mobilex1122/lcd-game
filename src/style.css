@@ -3,7 +3,6 @@
 * {
   transition:
     opacity 400ms,
-    background-color 400ms,
     filter 400ms;
   font-family: "Roboto", sans-serif;
   user-select: none;
@@ -20,53 +19,38 @@ body {
   position: relative;
 }
 .around {
-  position: absolute;
-  background-color: #1e3a51;
-  border-radius: 0.2rem;
-
-  left: 50%;
-  top: 45%;
-  transform: translate(-50%, -50%);
-  height: 120%;
-  width: 150%;
-  box-sizing: border-box;
-  border-top: #254966 outset 4px;
-}
-.around::before {
-  position: absolute;
-  content: "";
-  background-color: #ab8a5e;
-  border-radius: 0.2rem;
-
+  position: fixed;
+  background-color: black;
+  background: url("/console.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   left: 0%;
-  top: 0.4rem;
-
-  height: 100%;
+  top: 0%;
+  height: 323px;
   width: 100%;
-  z-index: -1;
-  box-sizing: border-box;
-  border: #c29e6f outset 4px;
+}
+.around::after {
+  content: "";
+  transition: opacity 400ms;
+  position: fixed;
+  background: url("/console-dark.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  left: 0%;
+  top: 0%;
+  height: 323px;
+  width: 100%;
+  opacity: 0;
 }
 
 .center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  transform: translateY(100%);
-  height: 100vh;
+  width: 409px;
+  margin: auto;
+  margin-top: 32px;
   transition: 0;
-  animation: show 1s 0.5s forwards;
-  animation-timing-function: cubic-bezier(0.18, 0.89, 0.32, 1.28);
-}
-
-@keyframes show {
-  0% {
-    transform: translateY(100%);
-  }
-  100% {
-    transform: translateY(0%);
-  }
+  background-color: black;
 }
 
 #game {
@@ -75,20 +59,35 @@ body {
   display: inline-block;
   overflow: hidden;
   isolation: isolate;
-  border-radius: 0.3rem;
-  border: #8a704e inset 5px;
+  width: 409px;
+  height: 258px;
+}
+#game::before {
+  position: absolute;
+  content: "";
+  inset: 0;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.473) 0%,
+    rgba(255, 255, 255, 0) 50%
+  );
+  background-position: 200px -60px;
+  background-repeat: no-repeat;
+  opacity: 1;
+  transition: 400ms;
 }
 #game::after {
   position: absolute;
   content: "";
   inset: 0;
+  background-color: rgba(255, 255, 255, 0.151);
   box-shadow: black inset 0 0 5px;
   opacity: 1;
   transition: 400ms;
 }
 
 .bg-light {
-  background-image: url("lcd-bg.png");
+  background-image: url("/lcd-bg.png");
   background-size: cover;
   position: absolute;
   inset: 0;
@@ -100,7 +99,7 @@ body {
 
 .bg-dark {
   opacity: 0;
-  background-image: url("lcd-bg-dark.png");
+  background-image: url("/lcd-bg-dark.png");
   background-size: cover;
   position: absolute;
   background-position: center;
@@ -112,6 +111,8 @@ body {
 
 svg {
   filter: drop-shadow(rgba(0, 0, 0, 0.274) 3px 3px 0.5px);
+  width: 408px;
+  height: 252px;
 }
 
 svg *:not(g, #bg *) {
@@ -125,12 +126,16 @@ svg *:not(g, #bg *).show {
 
 #darkmode {
   isolation: isolate;
-  color: rgb(12, 12, 12) !important;
+  display: inline-block;
+  width: fit-content;
+  color: rgba(12, 12, 12, 0.534) !important;
   transition: 400ms;
   opacity: 1;
   display: flex;
   align-items: center;
   gap: 0.2rem;
+  margin-top: 3px;
+  font-weight: bold;
 }
 
 #darkmode span {
@@ -139,6 +144,8 @@ svg *:not(g, #bg *).show {
 }
 #darkmode .switch {
   background-color: rgb(0, 0, 0);
+  filter: blur(0.2px);
+  transform: scale(0.8);
   position: relative;
   width: 1rem;
   height: 0.5rem;
@@ -152,7 +159,7 @@ svg *:not(g, #bg *).show {
   background-color: rgb(131, 0, 0);
   position: relative;
   display: inline-block;
-  border: #8a704e inset 1px;
+  border: #00000031 inset 1px;
   width: 0.2rem;
   height: 0.2rem;
 }
@@ -168,7 +175,7 @@ svg *:not(g, #bg *).show {
 }
 
 #darkmode .switch::after {
-  transition: 400ms;
+  transition: 100ms;
   content: "";
   background: linear-gradient(
     90deg,
@@ -200,20 +207,9 @@ svg *:not(g, #bg *).show {
     filter: drop-shadow(rgba(0, 0, 0, 0) 3px 3px 0px);
   }
 
-  #game {
-    border: #443726 inset 5px;
-  }
-
   #darkmode .switch::after {
     left: 0.6rem;
-    filter: brightness(1);
-  }
-  #darkmode .switch::before {
-    opacity: 1;
-    filter: brightness(10) blur(2.3px);
-  }
-  .around {
-    filter: brightness(0.3);
+    filter: brightness(0.5);
   }
   #darkmode {
     filter: brightness(0.5);
@@ -222,6 +218,12 @@ svg *:not(g, #bg *).show {
     opacity: 1;
   }
   #game::after {
-    opacity: 0.5;
+    opacity: 0.2;
+  }
+  #game::before {
+    opacity: 0;
+  }
+  .around::after {
+    opacity: 1;
   }
 }

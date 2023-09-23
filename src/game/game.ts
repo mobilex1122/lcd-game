@@ -8,7 +8,11 @@ export class Game {
   // private playerbefore = "tr";
   private isUpdatePaused = false;
 
-  private focus = false;
+  private focus = true;
+
+  // private framesPerSecond: number = 60;
+  // private millisecondsPerFrame: number = 1000 / this.framesPerSecond;
+  private frameCount: number = 0;
 
   private sound = new Piezo();
 
@@ -46,16 +50,10 @@ export class Game {
     window.addEventListener("keyup", (event) => {
       this.keys[event.code] = false;
     });
-
-    window.addEventListener("focus", () => {
-      this.focus = true;
-    });
-    window.addEventListener("blur", () => {
-      this.focus = false;
-    });
   }
 
   update(): void {
+    this.frameCount++;
     // Update game state based on elapsed time
     // const currentTime = Date.now();
     // const deltaTime = currentTime - this.lastFrameTime;
@@ -151,13 +149,19 @@ export class Game {
     } else if (this.keys["KeyK"]) {
       this.playernow = "br";
     }
+    if (this.keys["Escape"]) {
+      document.getElementById("unfocus")?.focus();
+    }
+    console.log(this.keys);
   }
 
   gameLoop(): void {
-    if (!this.isUpdatePaused) {
-      this.update();
+    if (this.focus) {
+      if (!this.isUpdatePaused) {
+        this.update();
+      }
+      this.input();
     }
-    this.input();
 
     // Repeat the function for the next frame
     requestAnimationFrame(() => this.gameLoop());

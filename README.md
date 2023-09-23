@@ -36,6 +36,8 @@ Recommended: `pnpm`
 
 ## TODO
 
+- [ ] Game modes (easy, hard)
+- [ ] Start Button
 - [ ] Desktop Version
 - [x] Graphics
 - [x] Base game

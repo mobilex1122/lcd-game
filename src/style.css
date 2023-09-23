@@ -2,39 +2,43 @@
 
 * {
   transition:
-    opacity 400ms,
-    filter 400ms;
+    opacity 200ms,
+    filter 200ms;
   font-family: "Roboto", sans-serif;
   user-select: none;
 }
 
 body {
   margin: 0;
-  transition: background-color 400ms;
+  transition: background-color 200ms;
   background-color: rgb(255, 255, 255);
   overflow: hidden;
 }
 
 .player {
-  position: relative;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .around {
-  position: fixed;
+  position: relative;
   background-color: black;
-  background: url("/console.png");
+  background: url("/console.webp");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   left: 0%;
   top: 0%;
   height: 323px;
-  width: 100%;
+  width: 600px;
+  z-index: 5;
 }
 .around::after {
   content: "";
-  transition: opacity 400ms;
+  transition: opacity 200ms;
   position: fixed;
-  background: url("/console-dark.png");
+  background: url("/console-dark.webp");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -44,23 +48,19 @@ body {
   width: 100%;
   opacity: 0;
 }
-
-.center {
-  width: 409px;
-  margin: auto;
-  margin-top: 32px;
-  transition: 0;
-  background-color: black;
-}
-
 #game {
-  transition: border 400ms;
-  position: relative;
+  position: absolute;
+  top: 32px;
+  left: 50%;
+  transform: translateX(-50%);
   display: inline-block;
   overflow: hidden;
   isolation: isolate;
+  background-color: rgb(0, 110, 9);
   width: 409px;
   height: 258px;
+  border: 5px black solid;
+  margin-top: -5px;
 }
 #game::before {
   position: absolute;
@@ -74,7 +74,8 @@ body {
   background-position: 200px -60px;
   background-repeat: no-repeat;
   opacity: 1;
-  transition: 400ms;
+  transition: 200ms;
+  z-index: 5;
 }
 #game::after {
   position: absolute;
@@ -83,11 +84,11 @@ body {
   background-color: rgba(255, 255, 255, 0.151);
   box-shadow: black inset 0 0 5px;
   opacity: 1;
-  transition: 400ms;
+  transition: 200ms;
 }
 
 .bg-light {
-  background-image: url("/lcd-bg.png");
+  background-image: url("/lcd-bg.webp");
   background-size: cover;
   position: absolute;
   inset: 0;
@@ -99,7 +100,7 @@ body {
 
 .bg-dark {
   opacity: 0;
-  background-image: url("/lcd-bg-dark.png");
+  background-image: url("/lcd-bg-dark.webp");
   background-size: cover;
   position: absolute;
   background-position: center;
@@ -110,7 +111,7 @@ body {
 }
 
 svg {
-  filter: drop-shadow(rgba(0, 0, 0, 0.274) 3px 3px 0.5px);
+  filter: drop-shadow(rgba(0, 0, 0, 0.274) -3px 3px 0.5px);
   width: 408px;
   height: 252px;
 }
@@ -126,16 +127,19 @@ svg *:not(g, #bg *).show {
 
 #darkmode {
   isolation: isolate;
+  position: absolute;
+  bottom: 10px;
+  left: 90px;
   display: inline-block;
   width: fit-content;
   color: rgba(12, 12, 12, 0.534) !important;
-  transition: 400ms;
   opacity: 1;
   display: flex;
   align-items: center;
   gap: 0.2rem;
   margin-top: 3px;
   font-weight: bold;
+  z-index: 7;
 }
 
 #darkmode span {
@@ -204,7 +208,7 @@ svg *:not(g, #bg *).show {
   }
 
   svg {
-    filter: drop-shadow(rgba(0, 0, 0, 0) 3px 3px 0px);
+    filter: drop-shadow(rgba(0, 0, 0, 0) -3px 3px 0px);
   }
 
   #darkmode .switch::after {
